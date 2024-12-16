@@ -1,4 +1,6 @@
-﻿namespace DragAndDrop
+﻿using System.Runtime.InteropServices;
+
+namespace DragAndDrop
 {
     public class Box
     {
@@ -6,17 +8,18 @@
         public int PositionY { get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public List<Attributes> Attributes { get; set; }
-        public List<Methods> Methods { get; set; }
-
+        public List<string> Attributes { get; set; }
+        public List<string> Methods { get; set; }
+        
+        public List<string> Classes { get; set; }
 
         
         
 
-        public int MinWidth = 80;
-        public int MinHeight = 40;
-        public int MaxWidth = 320;
-        public int MaxHeight = 320;
+        public int MinWidth = 100;
+        public int MinHeight = 80;
+        public int MaxWidth = 220;
+        public int MaxHeight = 220;
 
         
 
@@ -27,13 +30,14 @@
         {
             PositionX = x;
             PositionY = y;
-            Width = 120;
-            Height = 150;
+            Width = 150;
+            Height = 180;
             _color = Brushes.LightGray;
-            _text = "Class";
+            _text = $"{Classes}";
 
-            Attributes = new List<Attributes>();
-            Methods = new List<Methods>();
+            Classes = new List<string>() { "Class" };
+            Attributes = new List<string>() { "Attribute" };
+            Methods = new List<string>() { "Methods" };
 
         }
 
@@ -77,10 +81,10 @@
         {
             g.TranslateTransform(PositionX, PositionY);
             g.FillRectangle(_color, 0, 0, Width, Height);
-            
+
             g.FillRectangle(Brushes.Black, Width - 10, Height - 10, 10, 10);
-            g.DrawString("+string", new Font("Arial", 10), Brushes.Black, 10, 30);
-            g.DrawString("+method()", new Font("Arial", 10), Brushes.Black, 10, 50);
+            g.DrawString(Attributes[0], new Font("Arial", 10), Brushes.Black, 10, 30);
+            g.DrawString(Methods[0], new Font("Arial", 10), Brushes.Black, 10, 50);
 
 
             //pocitani textu na stred

@@ -46,8 +46,7 @@ namespace DragAndDrop
             if(_canvas.IsInCollisionWithBox(e.X, e.Y)!= null)
             {
                 EditForm editForm = new EditForm(_canvas.IsInCollisionWithBox(e.X, e.Y)!);
-
-                //do konstruktoru editformu dat jako vstup vystup funkce isincollisionwithbox
+                editForm.ShowDialog();
                
             }
         }

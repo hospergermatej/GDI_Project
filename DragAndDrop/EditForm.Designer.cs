@@ -32,6 +32,7 @@
             ExitButton = new Button();
             ApplyButton = new Button();
             AttributeTextBox = new TextBox();
+            MethodTextBox = new TextBox();
             SuspendLayout();
             // 
             // ClassNameTextBox
@@ -59,6 +60,7 @@
             ApplyButton.TabIndex = 2;
             ApplyButton.Text = "Apply Changes";
             ApplyButton.UseVisualStyleBackColor = true;
+            ApplyButton.Click += ApplyButton_Click;
             // 
             // AttributeTextBox
             // 
@@ -68,11 +70,20 @@
             AttributeTextBox.Size = new Size(100, 23);
             AttributeTextBox.TabIndex = 3;
             // 
+            // MethodTextBox
+            // 
+            MethodTextBox.Location = new Point(70, 129);
+            MethodTextBox.Name = "MethodTextBox";
+            MethodTextBox.PlaceholderText = "Methods";
+            MethodTextBox.Size = new Size(100, 23);
+            MethodTextBox.TabIndex = 4;
+            // 
             // EditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(570, 342);
+            Controls.Add(MethodTextBox);
             Controls.Add(AttributeTextBox);
             Controls.Add(ApplyButton);
             Controls.Add(ExitButton);
@@ -89,5 +100,6 @@
         private Button ExitButton;
         private Button ApplyButton;
         private TextBox AttributeTextBox;
+        private TextBox MethodTextBox;
     }
 }

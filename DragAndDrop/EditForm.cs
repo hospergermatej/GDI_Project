@@ -13,22 +13,32 @@ namespace DragAndDrop
     public partial class EditForm : Form
     {
         private Box _box;
-        private Canvas _canvas;
 
         public EditForm(Box box)
         {
+
             _box = box;
 
-            IsInCollisionWithBox(_box.Width, _box.Height);
+
 
             InitializeComponent();
         }
 
-      
-        public void IsInCollisionWithBox(int x, int y)
+        public void UpdateBox()
         {
-            EditForm editForm = new EditForm(_canvas.IsInCollisionWithBox(x, y)!);
+            _box.Methods.Clear();
+
+            _box.Attributes.Add(AttributeTextBox.Text);
+            _box.Methods.Add(MethodTextBox.Text);
+            _box.Classes.Add(ClassNameTextBox.Text);
+
         }
 
+        private void ApplyButton_Click(object sender, EventArgs e)
+        {
+            UpdateBox();
+            
+            this.Close();
+        }
     }
 }
