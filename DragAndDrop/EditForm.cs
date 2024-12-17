@@ -37,7 +37,12 @@ namespace DragAndDrop
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             UpdateBox();
-            
+
+            this.Close();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

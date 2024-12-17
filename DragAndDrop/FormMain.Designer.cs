@@ -30,6 +30,7 @@
         {
             pictureBox = new PictureBox();
             AddClassButton = new Button();
+            ExitButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -57,16 +58,30 @@
             AddClassButton.UseVisualStyleBackColor = true;
             AddClassButton.Click += AddClassButton_Click;
             // 
+            // ExitButton
+            // 
+            ExitButton.BackColor = Color.RosyBrown;
+            ExitButton.ForeColor = SystemColors.ButtonFace;
+            ExitButton.Location = new Point(4, 603);
+            ExitButton.Name = "ExitButton";
+            ExitButton.Size = new Size(75, 23);
+            ExitButton.TabIndex = 2;
+            ExitButton.Text = "Exit";
+            ExitButton.UseVisualStyleBackColor = false;
+            ExitButton.Click += ExitButton_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1066, 659);
+            Controls.Add(ExitButton);
             Controls.Add(AddClassButton);
             Controls.Add(pictureBox);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "FormMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "DragAndDrop";
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
@@ -76,5 +91,6 @@
 
         private PictureBox pictureBox;
         private Button AddClassButton;
+        private Button ExitButton;
     }
 }

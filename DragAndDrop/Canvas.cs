@@ -78,5 +78,25 @@ namespace DragAndDrop
 
         }
 
+        public void RemoveBox(Box box)
+        {
+            if (box != null)
+            {
+                _boxes.Remove(box);
+            }
+        }
+
+        public Box? IsInCollisisonWithRedButton(int x, int y)
+        {
+            for (int i = 0; i < _boxes.Count; i++)
+            {
+                Box box = _boxes[i];
+                if (box.IsInCollisisonWithRedButton(x, y))
+                    return box;
+            }
+            return null;
+        }
+        
+
     }
 }

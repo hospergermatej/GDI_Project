@@ -3,7 +3,7 @@ namespace DragAndDrop
     public partial class FormMain : Form
     {
         private Canvas _canvas;
-        
+
 
         public FormMain()
         {
@@ -37,18 +37,34 @@ namespace DragAndDrop
 
         private void AddClassButton_Click(object sender, EventArgs e)
         {
+            
             _canvas.AddBox(100, 100);
             pictureBox.Refresh();
         }
 
         private void pictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(_canvas.IsInCollisionWithBox(e.X, e.Y)!= null)
+
+            if (_canvas.IsInCollisisonWithRedButton(e.X, e.Y) != null)
+            {
+                _canvas.RemoveBox(_canvas.IsInCollisisonWithRedButton(e.X, e.Y)!);
+                pictureBox.Refresh();
+            }
+
+            if (_canvas.IsInCollisionWithBox(e.X, e.Y)!= null)
             {
                 EditForm editForm = new EditForm(_canvas.IsInCollisionWithBox(e.X, e.Y)!);
                 editForm.ShowDialog();
-               
+
             }
+
+
+            
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

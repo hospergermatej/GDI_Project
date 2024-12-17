@@ -24,16 +24,16 @@ namespace DragAndDrop
         
 
         private Brush _color;
-        private string _text;
+        
 
         public Box(int x, int y)
         {
             PositionX = x;
             PositionY = y;
-            Width = 150;
-            Height = 180;
+            Width = 100;
+            Height = 120;
             _color = Brushes.LightGray;
-            _text = $"{Classes}";
+            
 
             Classes = new List<string>() { "Class" };
             Attributes = new List<string>() { "Attribute" };
@@ -79,21 +79,33 @@ namespace DragAndDrop
 
         public void Draw(Graphics g)
         {
-            g.TranslateTransform(PositionX, PositionY);
-            g.FillRectangle(_color, 0, 0, Width, Height);
-
-            g.FillRectangle(Brushes.Black, Width - 10, Height - 10, 10, 10);
-            g.DrawString(Attributes[0], new Font("Arial", 10), Brushes.Black, 10, 30);
-            g.DrawString(Methods[0], new Font("Arial", 10), Brushes.Black, 10, 50);
-
-
             //pocitani textu na stred
-            SizeF textSize = g.MeasureString(_text, new Font("Arial", 10));
+            SizeF textSize = g.MeasureString(Classes[0], new Font("Arial", 10));
             float textX = (Width - textSize.Width) / 2;
             float textY = 10;
             float totalHeight = textY + textSize.Height + 10;
 
-            g.DrawString(_text, new Font("Arial", 10), Brushes.Black, textX, textY);
+
+            g.TranslateTransform(PositionX, PositionY);
+            g.FillRectangle(_color, 0, 0, Width, Height);
+            g.FillEllipse(Brushes.Red, 0, textY -10, 13, 13);
+            g.DrawLine(Pens.Black, 0, 30, Width, 30);
+            g.DrawLine(Pens.Black, 0, 11, 11, 2);
+            g.DrawLine(Pens.Black, 1, 2, 11, 11);
+            g.DrawRectangle(Pens.WhiteSmoke, 0, 0, Width, Height);
+            
+            
+
+            g.FillRectangle(Brushes.Black, Width - 10, Height - 10, 10, 10);
+            g.DrawString(Classes[0], new Font("Arial", 10), Brushes.Black, textX, textY);
+            g.DrawString(Attributes[0], new Font("Arial", 10), Brushes.Black, 10, 40);
+            g.DrawString(Methods[0], new Font("Arial", 10), Brushes.Black, 10, 70);
+
+
+            
+            
+
+           
             g.ResetTransform();
         }
 
@@ -112,5 +124,25 @@ namespace DragAndDrop
             return x > (PositionX + Width - 10) && x <= PositionX + Width
                 && y > (PositionY + Height - 10) && y <= PositionY + Height;
         }
+
+
+        //public bool IsInCollisisonWithRedButton(int x, int y)
+        //{
+        //    return x > (PositionX + 13) && x <= PositionX + 13
+        //        && y > (PositionY + 13) && y <= PositionY + 13;
+        //}
+
+        public bool IsInCollisisonWithRedButton(int x, int y)
+        {
+            int circleX = PositionX;
+            int circleY = PositionY;
+            int circleRadius = 13;
+
+            int distanceSquared = (x - circleX) * (x - circleX) + (y - circleY) * (y - circleY);
+            int radiusSquared = circleRadius * circleRadius;
+
+            return distanceSquared <= radiusSquared;
+        }
+
     }
 }
