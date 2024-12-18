@@ -88,11 +88,10 @@ namespace DragAndDrop
 
             g.TranslateTransform(PositionX, PositionY);
             g.FillRectangle(_color, 0, 0, Width, Height);
-            g.FillEllipse(Brushes.Red, 0, textY -10, 13, 13);
+            g.FillEllipse(Brushes.Red, 1, textY -10, 10, 10);
             g.DrawLine(Pens.Black, 0, 30, Width, 30);
-            g.DrawLine(Pens.Black, 0, 11, 11, 2);
-            g.DrawLine(Pens.Black, 1, 2, 11, 11);
-            g.DrawRectangle(Pens.WhiteSmoke, 0, 0, Width, Height);
+            g.DrawString("X",new Font("Arial",6),Brushes.Black,3,1);
+            g.DrawRectangle(Pens.GhostWhite, 0, 0, Width, Height);
             
             
 
