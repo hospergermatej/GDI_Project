@@ -99,6 +99,7 @@
             AbstractCheckBox.TabIndex = 7;
             AbstractCheckBox.Text = "Yes";
             AbstractCheckBox.UseVisualStyleBackColor = true;
+            AbstractCheckBox.CheckedChanged += AbstractCheckBox_CheckedChanged;
             // 
             // label3
             // 
@@ -126,6 +127,7 @@
             AttributesListBox1.Name = "AttributesListBox1";
             AttributesListBox1.Size = new Size(184, 139);
             AttributesListBox1.TabIndex = 10;
+            AttributesListBox1.MouseClick += AttributesListBox1_MouseClick;
             // 
             // MethodsListBox1
             // 
@@ -144,6 +146,7 @@
             AddAttrButton.TabIndex = 12;
             AddAttrButton.Text = "Add";
             AddAttrButton.UseVisualStyleBackColor = true;
+            AddAttrButton.Click += AddAttrButton_Click;
             // 
             // RemAttrButton
             // 
@@ -153,6 +156,7 @@
             RemAttrButton.TabIndex = 13;
             RemAttrButton.Text = "Rem";
             RemAttrButton.UseVisualStyleBackColor = true;
+            RemAttrButton.Click += RemAttrButton_Click;
             // 
             // AddMetButton
             // 
@@ -162,6 +166,7 @@
             AddMetButton.TabIndex = 14;
             AddMetButton.Text = "Add";
             AddMetButton.UseVisualStyleBackColor = true;
+            AddMetButton.Click += AddMetButton_Click;
             // 
             // RemMetButton
             // 
@@ -171,6 +176,7 @@
             RemMetButton.TabIndex = 15;
             RemMetButton.Text = "Rem";
             RemMetButton.UseVisualStyleBackColor = true;
+            RemMetButton.Click += RemMetButton_Click;
             // 
             // EditForm
             // 

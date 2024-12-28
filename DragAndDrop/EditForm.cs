@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,34 +17,111 @@ namespace DragAndDrop
 
         public EditForm(Box box)
         {
-
             _box = box;
-
-
-
-            InitializeComponent();
+            InitializeComponent(); // Ensure controls are initialized
+            SetValues();
         }
 
         public void UpdateBox()
         {
-            _box.Methods.Clear();
+
 
             //_box.Attributes.Add(AttributeTextBox.Text);
             //_box.Methods.Add(MethodTextBox.Text);
-            //_box.Classes.Add(ClassNameTextBox.Text);
+            _box.Classes.Add(ClassNameTextBox.Text);
+
 
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
+            _box.Methods.Clear();
+            _box.Classes.Clear();
+            _box.Attributes.Clear();
+
+
+
             UpdateBox();
+            SetValues();
 
             this.Close();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void AddAttrButton_Click(object sender, EventArgs e)
+        {
+            AddAttributeForm addAttributeForm = new AddAttributeForm(_box);
+            addAttributeForm.AttributeApplied += AddAttributeForm_AttributeApplied;
+            addAttributeForm.ShowDialog();
+
+
+
+
+        }
+
+
+        private void AddAttributeForm_AttributeApplied(object sender, EventArgs e)
+        {
+
+            SetValues();
+        }
+
+
+        private void AbstractCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _box.IsAbstract = AbstractCheckBox.Checked;
+
+        }
+
+        private void AttributesListBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+
+        }
+
+        private void SetValues()
+        {
+            AttributesListBox1.Items.Clear();
+
+            foreach (ClassAttributes atribute in _box.Attributes)
+            {
+                AttributesListBox1.Items.Add(atribute.ToString()!);
+
+            }
+
+
+            MethodsListBox1.Items.Clear();
+
+            foreach (Methods methods in _box.Methods)
+            {
+                MethodsListBox1.Items.Add(methods.ToString()!);
+
+            }
+
+        }
+
+        private void RemAttrButton_Click(object sender, EventArgs e)
+        {
+            _box.Attributes.RemoveAt(AttributesListBox1.SelectedIndex);
+            SetValues();
+
+        }
+
+        private void AddMetButton_Click(object sender, EventArgs e)
+        {
+            AddMethodForm addMethodForm = new AddMethodForm(_box);
+            addMethodForm.MethodApplied += AddAttributeForm_AttributeApplied;
+            addMethodForm.ShowDialog();
+        }
+
+        private void RemMetButton_Click(object sender, EventArgs e)
+        {
+            _box.Methods.RemoveAt(MethodsListBox1.SelectedIndex);
+            SetValues();
         }
     }
 }

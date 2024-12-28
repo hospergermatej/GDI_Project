@@ -14,6 +14,13 @@ namespace DragAndDrop
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
+
+            if (_canvas.IsInCollisisonWithRedButton(e.X, e.Y) != null)
+            {
+                _canvas.RemoveBox(_canvas.IsInCollisisonWithRedButton(e.X, e.Y)!);
+                pictureBox.Refresh();
+            }
+
             _canvas.Unselect();
             pictureBox.Refresh();
         }
@@ -45,11 +52,7 @@ namespace DragAndDrop
         private void pictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
-            if (_canvas.IsInCollisisonWithRedButton(e.X, e.Y) != null)
-            {
-                _canvas.RemoveBox(_canvas.IsInCollisisonWithRedButton(e.X, e.Y)!);
-                pictureBox.Refresh();
-            }
+           
 
             if (_canvas.IsInCollisionWithBox(e.X, e.Y)!= null)
             {

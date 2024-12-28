@@ -8,16 +8,16 @@ namespace DragAndDrop
         public int PositionY { get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public List<string> Attributes { get; set; }
-        public List<string> Methods { get; set; }
+        public List<ClassAttributes> Attributes { get; set; }
+        public List<Methods> Methods { get; set; }
         
         public List<string> Classes { get; set; }
 
-        
+        public bool IsAbstract { get; set; }
         
 
         public int MinWidth = 100;
-        public int MinHeight = 80;
+        public int MinHeight = 100;
         public int MaxWidth = 220;
         public int MaxHeight = 220;
 
@@ -30,26 +30,28 @@ namespace DragAndDrop
         {
             PositionX = x;
             PositionY = y;
-            Width = 100;
-            Height = 120;
-            _color = Brushes.LightGray;
+            Width = 200;
+            Height = 150;
+            _color = Brushes.GhostWhite;
+            IsAbstract = false;
             
 
+
             Classes = new List<string>() { "Class" };
-            Attributes = new List<string>() { "Attribute" };
-            Methods = new List<string>() { "Methods" };
+            Attributes = new List<ClassAttributes>() { new ClassAttributes(0, "pes", "string") };
+            Methods = new List<Methods>() { new Methods(0, "pes", "string",new List<string>()) };
 
         }
 
         public void Select()
         {
             
-            
+            _color = Brushes.WhiteSmoke;
         }
 
         public void Unselect()
         {
-            _color = Brushes.LightGray;
+            _color = Brushes.GhostWhite;
             
         }
 
@@ -91,20 +93,40 @@ namespace DragAndDrop
             g.FillEllipse(Brushes.Red, 1, textY -10, 10, 10);
             g.DrawLine(Pens.Black, 0, 30, Width, 30);
             g.DrawString("X",new Font("Arial",6),Brushes.Black,3,1);
-            g.DrawRectangle(Pens.GhostWhite, 0, 0, Width, Height);
-            
+            g.DrawRectangle(Pens.Black, 0, 0, Width, Height);
             
 
             g.FillRectangle(Brushes.Black, Width - 10, Height - 10, 10, 10);
-            g.DrawString(Classes[0], new Font("Arial", 10), Brushes.Black, textX, textY);
-            g.DrawString(Attributes[0], new Font("Arial", 10), Brushes.Black, 10, 40);
-            g.DrawString(Methods[0], new Font("Arial", 10), Brushes.Black, 10, 70);
+
+            if(IsAbstract)
+            {
+                g.DrawString(Classes[0], new Font("Arial",10, FontStyle.Italic), Brushes.Black, textX, textY);
+            }
+            else
+            {
+                g.DrawString(Classes[0], new Font("Arial", 10), Brushes.Black, textX, textY);
+            }
 
 
-            
-            
+            foreach (ClassAttributes attribute in Attributes)
+            {
+                float relativeY = textY + 20;
+                g.DrawString(attribute.ToString(), new Font("Arial", 10), Brushes.Black, 10, relativeY);
+                relativeY += 10;
 
+                g.DrawLine(Pens.Black, 0, relativeY+10, Width, relativeY+10);
+            }
            
+
+            foreach (Methods method in Methods)
+            {
+                float relativeY = textY + 50;
+                g.DrawString(method.ToString(), new Font("Arial", 10), Brushes.Black, 10, relativeY);
+                relativeY += 10;
+            }
+
+            
+
             g.ResetTransform();
         }
 
@@ -123,13 +145,6 @@ namespace DragAndDrop
             return x > (PositionX + Width - 10) && x <= PositionX + Width
                 && y > (PositionY + Height - 10) && y <= PositionY + Height;
         }
-
-
-        //public bool IsInCollisisonWithRedButton(int x, int y)
-        //{
-        //    return x > (PositionX + 13) && x <= PositionX + 13
-        //        && y > (PositionY + 13) && y <= PositionY + 13;
-        //}
 
         public bool IsInCollisisonWithRedButton(int x, int y)
         {

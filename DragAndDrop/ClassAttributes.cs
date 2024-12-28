@@ -1,34 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DragAndDrop
 {
-    public class Methods
+    public class ClassAttributes
     {
         public int AccessModifier { get; set; }
+        public string DataType { get; set; }
         public string Name { get; set; }
-        public string ReturnType { get; set; }
+        
 
-        public List<string> Arguments { get; set; }
-
-        public Methods(string name)
+        public ClassAttributes(string name) 
         {
-            AccessModifier=0;
+            AccessModifier = 0;
             Name = name;
-            ReturnType = "";
-            
+            DataType = "void";
         }
 
-        public Methods(int accessModifier, string name, string returnType, List<string> arguments)
+        //bude slouzit pro nacitani ze souboru
+        public ClassAttributes(int accessModifier, string name, string dataType)
         {
             AccessModifier = accessModifier;
             Name = name;
-            ReturnType = returnType;
-            Arguments = arguments;
+            DataType = dataType;
         }
 
         private string GetAccessModifierSymbol()
@@ -44,7 +42,7 @@ namespace DragAndDrop
 
         public override string ToString()
         {
-            return $"{GetAccessModifierSymbol()} {ReturnType} : {Name} , {Arguments}";
+            return $"{GetAccessModifierSymbol()} {DataType} : {Name}";
         }
     }
 }
