@@ -28,9 +28,9 @@ namespace DragAndDrop
         {
             _box.Methods.Clear();
 
-            _box.Attributes.Add(AttributeTextBox.Text);
-            _box.Methods.Add(MethodTextBox.Text);
-            _box.Classes.Add(ClassNameTextBox.Text);
+            //_box.Attributes.Add(AttributeTextBox.Text);
+            //_box.Methods.Add(MethodTextBox.Text);
+            //_box.Classes.Add(ClassNameTextBox.Text);
 
         }
 
