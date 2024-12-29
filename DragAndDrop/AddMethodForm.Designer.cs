@@ -35,6 +35,9 @@
             label3 = new Label();
             NameTextBox = new TextBox();
             ApplyButton = new Button();
+            ExitButton = new Button();
+            ArgumentsListBox1 = new ListBox();
+            AddButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -96,11 +99,43 @@
             ApplyButton.UseVisualStyleBackColor = true;
             ApplyButton.Click += ApplyButton_Click;
             // 
+            // ExitButton
+            // 
+            ExitButton.Location = new Point(192, 265);
+            ExitButton.Name = "ExitButton";
+            ExitButton.Size = new Size(75, 23);
+            ExitButton.TabIndex = 7;
+            ExitButton.Text = "Exit";
+            ExitButton.UseVisualStyleBackColor = true;
+            ExitButton.Click += ExitButton_Click;
+            // 
+            // ArgumentsListBox1
+            // 
+            ArgumentsListBox1.FormattingEnabled = true;
+            ArgumentsListBox1.ItemHeight = 15;
+            ArgumentsListBox1.Location = new Point(147, 92);
+            ArgumentsListBox1.Name = "ArgumentsListBox1";
+            ArgumentsListBox1.Size = new Size(120, 94);
+            ArgumentsListBox1.TabIndex = 8;
+            // 
+            // AddButton
+            // 
+            AddButton.Location = new Point(147, 192);
+            AddButton.Name = "AddButton";
+            AddButton.Size = new Size(37, 23);
+            AddButton.TabIndex = 9;
+            AddButton.Text = "Add";
+            AddButton.UseVisualStyleBackColor = true;
+            AddButton.Click += AddButton_Click;
+            // 
             // AddMethodForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(279, 312);
+            Controls.Add(AddButton);
+            Controls.Add(ArgumentsListBox1);
+            Controls.Add(ExitButton);
             Controls.Add(ApplyButton);
             Controls.Add(NameTextBox);
             Controls.Add(label3);
@@ -124,5 +159,8 @@
         private Label label3;
         private TextBox NameTextBox;
         private Button ApplyButton;
+        private Button ExitButton;
+        private ListBox ArgumentsListBox1;
+        private Button AddButton;
     }
 }

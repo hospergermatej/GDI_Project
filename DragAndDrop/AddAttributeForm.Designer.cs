@@ -35,6 +35,7 @@
             ApplyButton = new Button();
             label3 = new Label();
             NametextBox1 = new TextBox();
+            ExitButton1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -96,11 +97,22 @@
             NametextBox1.Size = new Size(100, 23);
             NametextBox1.TabIndex = 6;
             // 
+            // ExitButton1
+            // 
+            ExitButton1.Location = new Point(192, 277);
+            ExitButton1.Name = "ExitButton1";
+            ExitButton1.Size = new Size(75, 23);
+            ExitButton1.TabIndex = 7;
+            ExitButton1.Text = "Exit";
+            ExitButton1.UseVisualStyleBackColor = true;
+            ExitButton1.Click += ExitButton1_Click;
+            // 
             // AddAttributeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(279, 312);
+            Controls.Add(ExitButton1);
             Controls.Add(NametextBox1);
             Controls.Add(label3);
             Controls.Add(ApplyButton);
@@ -124,5 +136,6 @@
         private Button ApplyButton;
         private Label label3;
         private TextBox NametextBox1;
+        private Button ExitButton1;
     }
 }

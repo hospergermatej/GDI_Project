@@ -51,6 +51,7 @@
             ClassNameTextBox.PlaceholderText = "ClassName";
             ClassNameTextBox.Size = new Size(422, 23);
             ClassNameTextBox.TabIndex = 0;
+            ClassNameTextBox.TextChanged += ClassNameTextBox_TextChanged;
             // 
             // ExitButton
             // 

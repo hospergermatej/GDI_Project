@@ -13,12 +13,14 @@ namespace DragAndDrop
     public partial class AddMethodForm : Form
     {
         private Box _box;
+        public List<string> Arguments { get; set; }
         public event EventHandler MethodApplied;
         public AddMethodForm(Box box)
         {
             _box = box;
-
-            InitializeComponent();
+            InitializeComponent(); // Ensure controls are initialized first
+            Arguments = new List<string>();
+            ArgumentsListBox1.DataSource = Arguments;
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
@@ -38,6 +40,17 @@ namespace DragAndDrop
 
 
 
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            EditMethodForm editMethodForm = new EditMethodForm(Arguments);
+            editMethodForm.ShowDialog();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace DragAndDrop
 
             _box = box;
             InitializeComponent();
-            
+
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
@@ -35,11 +35,16 @@ namespace DragAndDrop
 
         public void updateListBox()
         {
-            
+
             _box.Attributes.Add(new ClassAttributes(0, NametextBox1.Text, DataTypetextBox1.Text));
-            
-            
-            
+
+
+
+        }
+
+        private void ExitButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

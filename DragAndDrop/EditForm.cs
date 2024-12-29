@@ -22,26 +22,11 @@ namespace DragAndDrop
             SetValues();
         }
 
-        public void UpdateBox()
-        {
-
-
-            //_box.Attributes.Add(AttributeTextBox.Text);
-            //_box.Methods.Add(MethodTextBox.Text);
-            _box.Classes.Add(ClassNameTextBox.Text);
-
-
-        }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            _box.Methods.Clear();
-            _box.Classes.Clear();
-            _box.Attributes.Clear();
 
 
-
-            UpdateBox();
             SetValues();
 
             this.Close();
@@ -122,6 +107,11 @@ namespace DragAndDrop
         {
             _box.Methods.RemoveAt(MethodsListBox1.SelectedIndex);
             SetValues();
+        }
+
+        private void ClassNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+           _box.Class = ClassNameTextBox.Text;
         }
     }
 }

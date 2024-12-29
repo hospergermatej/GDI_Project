@@ -20,7 +20,7 @@ namespace DragAndDrop
             AccessModifier=0;
             Name = name;
             ReturnType = "";
-            
+
         }
 
         public Methods(int accessModifier, string name, string returnType, List<string> arguments)
@@ -44,7 +44,8 @@ namespace DragAndDrop
 
         public override string ToString()
         {
-            return $"{GetAccessModifierSymbol()} {ReturnType} : {Name} , {Arguments}";
+            string argumentsString = Arguments != null ? string.Join(" , ", Arguments) : string.Empty;
+            return $"{GetAccessModifierSymbol()} {ReturnType} : {Name} , {argumentsString}";
         }
     }
 }

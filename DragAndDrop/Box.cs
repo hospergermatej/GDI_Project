@@ -11,7 +11,7 @@ namespace DragAndDrop
         public List<ClassAttributes> Attributes { get; set; }
         public List<Methods> Methods { get; set; }
         
-        public List<string> Classes { get; set; }
+        public string Class{ get; set; }
 
         public bool IsAbstract { get; set; }
         
@@ -37,7 +37,7 @@ namespace DragAndDrop
             
 
 
-            Classes = new List<string>() { "Class" };
+            Class = "Class";
             Attributes = new List<ClassAttributes>() { new ClassAttributes(0, "pes", "string") };
             Methods = new List<Methods>() { new Methods(0, "pes", "string",new List<string>()) };
 
@@ -82,7 +82,7 @@ namespace DragAndDrop
         public void Draw(Graphics g)
         {
             //pocitani textu na stred
-            SizeF textSize = g.MeasureString(Classes[0], new Font("Arial", 10));
+            SizeF textSize = g.MeasureString(Class, new Font("Arial", 10));
             float textX = (Width - textSize.Width) / 2;
             float textY = 10;
             float totalHeight = textY + textSize.Height + 10;
@@ -102,29 +102,31 @@ namespace DragAndDrop
 
             if(IsAbstract)
             {
-                g.DrawString(Classes[0], new Font("Arial",10, FontStyle.Italic), Brushes.Black, textX, textY);
+                g.DrawString(Class, new Font("Arial",10, FontStyle.Italic), Brushes.Black, textX, textY);
             }
             else
             {
-                g.DrawString(Classes[0], new Font("Arial", 10), Brushes.Black, textX, textY);
+                g.DrawString(Class, new Font("Arial", 10), Brushes.Black, textX, textY);
             }
 
-
+            float relativeY = textY + 30;
+            
             foreach (ClassAttributes attribute in Attributes)
             {
-                float relativeY = textY + 20;
+               
                 g.DrawString(attribute.ToString(), new Font("Arial", 10), Brushes.Black, 10, relativeY);
-                relativeY += 10;
+                relativeY += 20;
 
-                g.DrawLine(Pens.Black, 0, relativeY+10, Width, relativeY+10);
+                
             }
-           
+            g.DrawLine(Pens.Black, 0, relativeY+10, Width, relativeY+10);
+            relativeY += 20;
 
             foreach (Methods method in Methods)
             {
-                float relativeY = textY + 50;
+                
                 g.DrawString(method.ToString(), new Font("Arial", 10), Brushes.Black, 10, relativeY);
-                relativeY += 10;
+                relativeY += 20;
             }
 
             
