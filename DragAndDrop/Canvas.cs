@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 
 namespace DragAndDrop
 {
@@ -95,6 +96,24 @@ namespace DragAndDrop
                     return box;
             }
             return null;
+        }
+
+
+        public Box? IsInCollisionWithBlackEllipse(int x, int y)
+        {
+            for (int i = 0; i < _boxes.Count; i++)
+            {
+                Box box = _boxes[i];
+                if (box.IsInCollisionWithBlackEllipse(x, y))
+                    return box;
+            }
+            return null;
+        }
+
+        public void DrawLine(Graphics g, MouseEventArgs e)
+        {
+            foreach (Box box in _boxes)
+                box.DrawLine(g,e);
         }
         
 

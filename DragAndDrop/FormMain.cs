@@ -29,6 +29,15 @@ namespace DragAndDrop
         {
             _canvas.Select(e.X, e.Y);
             pictureBox.Refresh();
+
+
+            if(_canvas.IsInCollisionWithBlackEllipse(e.X, e.Y) != null)
+            {
+               Graphics g = pictureBox.CreateGraphics();
+                _canvas.Select(e.X, e.Y);
+                _canvas.DrawLine(g,e);
+            }
+
         }
 
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
