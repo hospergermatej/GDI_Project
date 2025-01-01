@@ -8,8 +8,8 @@ namespace DragAndDrop
         public int PositionY { get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public List<ClassAttributes> Attributes { get; set; }
-        public List<Methods> Methods { get; set; }
+        public List<ClassAttribute> Attributes { get; set; }
+        public List<Method> Methods { get; set; }
         
         public string Class{ get; set; }
 
@@ -38,8 +38,8 @@ namespace DragAndDrop
 
 
             Class = "Class";
-            Attributes = new List<ClassAttributes>() { new ClassAttributes(0, "pes", "string") };
-            Methods = new List<Methods>() { new Methods(0, "pes", "string",new List<string>()) };
+            Attributes = new List<ClassAttribute>() { new ClassAttribute(0, "pes", "string") };
+            Methods = new List<Method>() { new Method(0, "pes", "string",new List<string>()) };
 
         }
 
@@ -111,7 +111,7 @@ namespace DragAndDrop
 
             float relativeY = textY + 30;
             
-            foreach (ClassAttributes attribute in Attributes)
+            foreach (ClassAttribute attribute in Attributes)
             {
                
                 g.DrawString(attribute.ToString(), new Font("Arial", 10), Brushes.Black, 10, relativeY);
@@ -122,7 +122,7 @@ namespace DragAndDrop
             g.DrawLine(Pens.Black, 0, relativeY+10, Width, relativeY+10);
             relativeY += 20;
 
-            foreach (Methods method in Methods)
+            foreach (Method method in Methods)
             {
                 
                 g.DrawString(method.ToString(), new Font("Arial", 10), Brushes.Black, 10, relativeY);
@@ -171,7 +171,7 @@ namespace DragAndDrop
         {
             int circleX = PositionX + Width + 10;
             int circleY = PositionY + Height / 2;
-            int circleRadius = 5;
+            int circleRadius = 7;
 
             int distanceSquared = (x - circleX) * (x - circleX) + (y - circleY) * (y - circleY);
             int radiusSquared = circleRadius * circleRadius;

@@ -36,7 +36,7 @@ namespace DragAndDrop
         public void updateListBox()
         {
 
-            _box.Methods.Add(new Methods(Name));
+            _box.Methods.Add(new Method(Name));
 
 
 

@@ -72,7 +72,7 @@ namespace DragAndDrop
         {
             AttributesListBox1.Items.Clear();
 
-            foreach (ClassAttributes atribute in _box.Attributes)
+            foreach (ClassAttribute atribute in _box.Attributes)
             {
                 AttributesListBox1.Items.Add(atribute.ToString()!);
 
@@ -81,7 +81,7 @@ namespace DragAndDrop
 
             MethodsListBox1.Items.Clear();
 
-            foreach (Methods methods in _box.Methods)
+            foreach (Method methods in _box.Methods)
             {
                 MethodsListBox1.Items.Add(methods.ToString()!);
 

@@ -7,18 +7,22 @@ namespace DragAndDrop
     {
         private List<Box> _boxes;
         private Selection? _selection;
+        private List<Line> _lines;
 
         public Canvas()
         {
             _boxes = new List<Box>();
             _selection = null;
-
+            _lines = new List<Line>();
         }
 
         public void Draw(Graphics g)
         {
             foreach (Box box in _boxes)
                 box.Draw(g);
+
+            foreach (Line line in _lines)
+                line.Draw(g);
         }
 
         public void Select(int x, int y)
@@ -108,12 +112,24 @@ namespace DragAndDrop
                     return box;
             }
             return null;
+
+
         }
 
-        public void DrawLine(Graphics g, MouseEventArgs e)
+
+
+
+        public void AddLine(Box start, Box end)
         {
-            foreach (Box box in _boxes)
-                box.DrawLine(g,e);
+            if (_selection == null)
+                return;
+
+            Line line = new Line(start, end);
+            _lines.Add(line);
+        }
+        public void RememberClickedBoxes(Box firstBox, Box secondBox)
+        {
+            
         }
         
 

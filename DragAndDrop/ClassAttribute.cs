@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace DragAndDrop
 {
-    public class ClassAttributes
+    public class ClassAttribute
     {
         public int AccessModifier { get; set; }
         public string DataType { get; set; }
         public string Name { get; set; }
         
 
-        public ClassAttributes(string name) 
+        public ClassAttribute(string name) 
         {
             AccessModifier = 0;
             Name = name;
@@ -22,7 +22,7 @@ namespace DragAndDrop
         }
 
         //bude slouzit pro nacitani ze souboru
-        public ClassAttributes(int accessModifier, string name, string dataType)
+        public ClassAttribute(int accessModifier, string name, string dataType)
         {
             AccessModifier = accessModifier;
             Name = name;

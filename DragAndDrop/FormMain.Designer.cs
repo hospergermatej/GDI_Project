@@ -31,6 +31,7 @@
             pictureBox = new PictureBox();
             AddClassButton = new Button();
             ExitButton = new Button();
+            Exportbutton1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -70,11 +71,22 @@
             ExitButton.UseVisualStyleBackColor = false;
             ExitButton.Click += ExitButton_Click;
             // 
+            // Exportbutton1
+            // 
+            Exportbutton1.Location = new Point(4, 532);
+            Exportbutton1.Name = "Exportbutton1";
+            Exportbutton1.Size = new Size(75, 48);
+            Exportbutton1.TabIndex = 3;
+            Exportbutton1.Text = "Export to PNG";
+            Exportbutton1.UseVisualStyleBackColor = true;
+            Exportbutton1.Click += Exportbutton1_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1066, 659);
+            Controls.Add(Exportbutton1);
             Controls.Add(ExitButton);
             Controls.Add(AddClassButton);
             Controls.Add(pictureBox);
@@ -92,5 +104,6 @@
         private PictureBox pictureBox;
         private Button AddClassButton;
         private Button ExitButton;
+        private Button Exportbutton1;
     }
 }

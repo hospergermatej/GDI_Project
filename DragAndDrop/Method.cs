@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DragAndDrop
 {
-    public class Methods
+    public class Method
     {
         public int AccessModifier { get; set; }
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace DragAndDrop
 
         public List<string> Arguments { get; set; }
 
-        public Methods(string name)
+        public Method(string name)
         {
             AccessModifier=0;
             Name = name;
@@ -23,7 +23,7 @@ namespace DragAndDrop
 
         }
 
-        public Methods(int accessModifier, string name, string returnType, List<string> arguments)
+        public Method(int accessModifier, string name, string returnType, List<string> arguments)
         {
             AccessModifier = accessModifier;
             Name = name;

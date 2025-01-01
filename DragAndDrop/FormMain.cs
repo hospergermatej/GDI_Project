@@ -31,12 +31,7 @@ namespace DragAndDrop
             pictureBox.Refresh();
 
 
-            if(_canvas.IsInCollisionWithBlackEllipse(e.X, e.Y) != null)
-            {
-               Graphics g = pictureBox.CreateGraphics();
-                _canvas.Select(e.X, e.Y);
-                _canvas.DrawLine(g,e);
-            }
+            
 
         }
 
@@ -53,7 +48,7 @@ namespace DragAndDrop
 
         private void AddClassButton_Click(object sender, EventArgs e)
         {
-            
+
             _canvas.AddBox(100, 100);
             pictureBox.Refresh();
         }
@@ -61,22 +56,57 @@ namespace DragAndDrop
         private void pictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
-           
 
-            if (_canvas.IsInCollisionWithBox(e.X, e.Y)!= null)
+
+            if (_canvas.IsInCollisionWithBox(e.X, e.Y) != null)
             {
                 EditForm editForm = new EditForm(_canvas.IsInCollisionWithBox(e.X, e.Y)!);
                 editForm.ShowDialog();
 
             }
 
+            if (_canvas.IsInCollisionWithBlackEllipse(e.X, e.Y) != null)
+            {
+                
+                
+                //_canvas.AddLine();
 
-            
+
+            }
+
+
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Exportbutton1_Click(object sender, EventArgs e)
+        {
+            using (Bitmap bitmap = new Bitmap(pictureBox.Width, pictureBox.Height))
+            {
+                pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "PNG Files (.png)|.png",
+                    DefaultExt = "png"
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                        MessageBox.Show("PNG exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error saving image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
