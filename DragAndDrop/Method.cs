@@ -23,6 +23,11 @@ namespace DragAndDrop
 
         }
 
+        public Method()
+        {
+            
+        }
+
         public Method(int accessModifier, string name, string returnType, List<string> arguments)
         {
             AccessModifier = accessModifier;

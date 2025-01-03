@@ -32,6 +32,8 @@
             AddClassButton = new Button();
             ExitButton = new Button();
             Exportbutton1 = new Button();
+            LoadButton = new Button();
+            SaveButton1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -51,9 +53,9 @@
             // 
             // AddClassButton
             // 
-            AddClassButton.Location = new Point(4, 34);
+            AddClassButton.Location = new Point(4, 22);
             AddClassButton.Name = "AddClassButton";
-            AddClassButton.Size = new Size(75, 23);
+            AddClassButton.Size = new Size(75, 53);
             AddClassButton.TabIndex = 1;
             AddClassButton.Text = "Add Class";
             AddClassButton.UseVisualStyleBackColor = true;
@@ -81,11 +83,33 @@
             Exportbutton1.UseVisualStyleBackColor = true;
             Exportbutton1.Click += Exportbutton1_Click;
             // 
+            // LoadButton
+            // 
+            LoadButton.Location = new Point(4, 182);
+            LoadButton.Name = "LoadButton";
+            LoadButton.Size = new Size(75, 54);
+            LoadButton.TabIndex = 4;
+            LoadButton.Text = "Load JSON";
+            LoadButton.UseVisualStyleBackColor = true;
+            LoadButton.Click += LoadButton_Click;
+            // 
+            // SaveButton1
+            // 
+            SaveButton1.Location = new Point(4, 123);
+            SaveButton1.Name = "SaveButton1";
+            SaveButton1.Size = new Size(75, 53);
+            SaveButton1.TabIndex = 5;
+            SaveButton1.Text = "Save JSON";
+            SaveButton1.UseVisualStyleBackColor = true;
+            SaveButton1.Click += SaveButton1_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1066, 659);
+            Controls.Add(SaveButton1);
+            Controls.Add(LoadButton);
             Controls.Add(Exportbutton1);
             Controls.Add(ExitButton);
             Controls.Add(AddClassButton);
@@ -94,7 +118,7 @@
             MaximizeBox = false;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "DragAndDrop";
+            Text = "UML Editor";
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
         }
@@ -105,5 +129,7 @@
         private Button AddClassButton;
         private Button ExitButton;
         private Button Exportbutton1;
+        private Button LoadButton;
+        private Button SaveButton1;
     }
 }

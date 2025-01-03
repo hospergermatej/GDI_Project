@@ -1,15 +1,18 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Net.Mail;
+using System.Runtime.InteropServices;
 
 namespace DragAndDrop
 {
     public class Box
     {
-        public int PositionX { get; private set; }
-        public int PositionY { get; private set; }
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        public int PositionX { get;  set; }
+        public int PositionY { get; set; }
+        public int Width { get;  set; }
+        public int Height { get; set; }
         public List<ClassAttribute> Attributes { get; set; }
         public List<Method> Methods { get; set; }
+
+        public List<Line> Lines { get; set; }
         
         public string Class{ get; set; }
 
@@ -23,7 +26,8 @@ namespace DragAndDrop
 
         
 
-        private Brush _color;
+        private Brush _color = Brushes.GhostWhite;
+
         
 
         public Box(int x, int y)
@@ -38,10 +42,33 @@ namespace DragAndDrop
 
 
             Class = "Class";
-            Attributes = new List<ClassAttribute>() { new ClassAttribute(0, "pes", "string") };
-            Methods = new List<Method>() { new Method(0, "pes", "string",new List<string>()) };
+            //Attributes = new List<ClassAttribute>() { new ClassAttribute(0, "pes", "string") };
+            //Methods = new List<Method>() { new Method(0, "pes", "string",new List<string>()) };
+            Lines = new List<Line>();
 
         }
+
+
+        public Box()
+        {
+
+        }
+
+        public Box(int positionX,int positionY,int width,
+            int height,List<ClassAttribute> attributes,
+            List<Method> methods,List<Line> lines,string nclass)
+        {
+            PositionX = positionX;
+            PositionY = positionY;
+            Width = width;
+            Height = height;
+            Attributes = attributes;
+            Methods = methods;
+            Lines = lines;
+            Class = nclass;
+        }
+
+
 
         public void Select()
         {
@@ -129,7 +156,15 @@ namespace DragAndDrop
                 relativeY += 20;
             }
 
+            foreach(Line line in Lines)
+            {
+               line.Draw(g);
+                
+            }
             
+
+
+
 
             g.ResetTransform();
         }

@@ -1,13 +1,17 @@
 ﻿using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DragAndDrop
 {
     public class Canvas
     {
-        private List<Box> _boxes;
+        public List<Box> _boxes;
         private Selection? _selection;
         private List<Line> _lines;
+
+        
+
 
         public Canvas()
         {
@@ -116,22 +120,19 @@ namespace DragAndDrop
 
         }
 
-
-
-
-        public void AddLine(Box start, Box end)
+        public void AddLine(Box startBox, Box endBox)
         {
-            if (_selection == null)
-                return;
-
-            Line line = new Line(start, end);
+            Line line = new Line(startBox, endBox);
             _lines.Add(line);
-        }
-        public void RememberClickedBoxes(Box firstBox, Box secondBox)
-        {
+
             
         }
-        
+
+
+       
 
     }
+        
+
+    
 }

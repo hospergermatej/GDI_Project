@@ -21,6 +21,11 @@ namespace DragAndDrop
             DataType = "void";
         }
 
+        public ClassAttribute()
+        {
+            
+        }
+
         //bude slouzit pro nacitani ze souboru
         public ClassAttribute(int accessModifier, string name, string dataType)
         {

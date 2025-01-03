@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace DragAndDrop
 {
     public partial class FormMain : Form
@@ -31,7 +33,7 @@ namespace DragAndDrop
             pictureBox.Refresh();
 
 
-            
+
 
         }
 
@@ -44,6 +46,7 @@ namespace DragAndDrop
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
             _canvas.Draw(e.Graphics);
+
         }
 
         private void AddClassButton_Click(object sender, EventArgs e)
@@ -65,18 +68,20 @@ namespace DragAndDrop
 
             }
 
+
             if (_canvas.IsInCollisionWithBlackEllipse(e.X, e.Y) != null)
             {
-                
-                
-                //_canvas.AddLine();
+                Box start = new Box(pictureBox.Location.X + pictureBox.Width / 2, pictureBox.Location.Y + pictureBox.Height / 2);
+                Box end = new Box(pictureBox.Location.X + pictureBox.Width / 2, pictureBox.Location.Y + pictureBox.Height / 2);
+
+
+
+                _canvas.AddLine(start, end);
 
 
             }
 
-
         }
-
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -108,5 +113,36 @@ namespace DragAndDrop
                 }
             }
         }
+
+        private void SaveButton1_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+               
+                List<Box> boxes = _canvas._boxes;
+                saveFileDialog.Filter = "JSON files (.json)|.json|All files (.)|.";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    LoadSaveDiagram.Save(boxes, saveFileDialog.FileName);
+                }
+            }
+        }
+
+        private void LoadButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "JSON files (.json)|.json|All files (.)|.";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    List<Box> Boxes = LoadSaveDiagram.Load(filePath);
+                    _canvas._boxes = Boxes;
+                    pictureBox.Refresh();
+                }
+            }
+        }
+
+
     }
 }

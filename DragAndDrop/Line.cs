@@ -11,14 +11,24 @@ namespace DragAndDrop
         public Box Start { get; set; }
         public Box End { get; set; }
 
-        
-        private Point StartP => new Point(Start.PositionX + Start.Width / 2, Start.PositionY + Start.Height / 2);
-        private Point EndP => new Point(End.PositionX + End.Width / 2, End.PositionY + End.Height / 2);
+        public void SearchPoints(Box start, Box end)
+        {
+            Point StartPoint = new Point(start.PositionX, start.PositionY);
+            Point EndPoint = new Point(end.PositionX, end.PositionY);
+
+            StartP = StartPoint;
+            EndP = EndPoint;
+        }
+
+
+        private Point StartP { get; set;}
+        private Point EndP { get; set; }
 
         public Line(Box start, Box end) 
         {
             start = Start;
             end = End;
+           SearchPoints(start, end);
         }
 
 
