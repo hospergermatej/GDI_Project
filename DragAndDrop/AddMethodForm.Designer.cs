@@ -117,6 +117,7 @@
             ArgumentsListBox1.Name = "ArgumentsListBox1";
             ArgumentsListBox1.Size = new Size(120, 94);
             ArgumentsListBox1.TabIndex = 8;
+            ArgumentsListBox1.SelectedIndexChanged += ArgumentsListBox1_SelectedIndexChanged;
             // 
             // AddButton
             // 

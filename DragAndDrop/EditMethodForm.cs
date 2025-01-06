@@ -13,6 +13,7 @@ namespace DragAndDrop
     public partial class EditMethodForm : Form
     {
         private List<string> Arguments { get; set; }
+        private Box _box;
         public EditMethodForm(List<string> arguments)
         {
 
@@ -25,6 +26,7 @@ namespace DragAndDrop
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             Arguments.Add(NametextBox1.Text);
+            
             this.Close();
         }
 

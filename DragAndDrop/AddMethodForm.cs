@@ -18,17 +18,36 @@ namespace DragAndDrop
         public AddMethodForm(Box box)
         {
             _box = box;
-            InitializeComponent(); // Ensure controls are initialized first
+            InitializeComponent();
             Arguments = new List<string>();
             ArgumentsListBox1.DataSource = Arguments;
         }
 
+        public void SetValues()
+        {
+            ArgumentsListBox1.Items.Clear();
+
+            foreach (string strings  in Arguments)
+            {
+                ArgumentsListBox1.Items.Add(strings.ToString()!);
+
+            }
+        }
+
+
         private void ApplyButton_Click(object sender, EventArgs e)
         {
+            SetValues();
+            
             updateListBox();
+
 
             // Trigger the event
             MethodApplied?.Invoke(this, EventArgs.Empty);
+
+
+
+
 
             this.Close();
         }
@@ -36,9 +55,9 @@ namespace DragAndDrop
         public void updateListBox()
         {
 
-            _box.Methods.Add(new Method(Name));
 
 
+            _box.Methods.Add(new Method(0, NameTextBox.Text, DataTypeTextBox.Text, Arguments));
 
         }
 
@@ -47,10 +66,17 @@ namespace DragAndDrop
             this.Close();
         }
 
+
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             EditMethodForm editMethodForm = new EditMethodForm(Arguments);
             editMethodForm.ShowDialog();
+        }
+
+        private void ArgumentsListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -42,8 +42,8 @@ namespace DragAndDrop
 
 
             Class = "Class";
-            //Attributes = new List<ClassAttribute>() { new ClassAttribute(0, "pes", "string") };
-            //Methods = new List<Method>() { new Method(0, "pes", "string",new List<string>()) };
+            Attributes = new List<ClassAttribute>() { new ClassAttribute(0, "pes", "string") };
+            Methods = new List<Method>() { new Method(0, "kocka", "string",new List<string>()) };
             Lines = new List<Line>();
 
         }
@@ -118,7 +118,6 @@ namespace DragAndDrop
             g.TranslateTransform(PositionX, PositionY);
             g.FillRectangle(_color, 0, 0, Width, Height);
             g.FillEllipse(Brushes.Black, Width, Height / 2, 10, 10); // na cary
-            g.FillEllipse(Brushes.Black, -10, Height / 2, 10, 10); // na cary
             g.FillEllipse(Brushes.Red, 1, textY -10, 10, 10);
             g.DrawLine(Pens.Black, 0, 30, Width, 30);
             g.DrawString("X",new Font("Arial",6),Brushes.Black,3,1);
@@ -154,12 +153,6 @@ namespace DragAndDrop
                 
                 g.DrawString(method.ToString(), new Font("Arial", 10), Brushes.Black, 10, relativeY);
                 relativeY += 20;
-            }
-
-            foreach(Line line in Lines)
-            {
-               line.Draw(g);
-                
             }
             
 
@@ -206,7 +199,7 @@ namespace DragAndDrop
         {
             int circleX = PositionX + Width + 10;
             int circleY = PositionY + Height / 2;
-            int circleRadius = 7;
+            int circleRadius = 10;
 
             int distanceSquared = (x - circleX) * (x - circleX) + (y - circleY) * (y - circleY);
             int radiusSquared = circleRadius * circleRadius;

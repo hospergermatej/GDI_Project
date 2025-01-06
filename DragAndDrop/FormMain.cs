@@ -71,14 +71,7 @@ namespace DragAndDrop
 
             if (_canvas.IsInCollisionWithBlackEllipse(e.X, e.Y) != null)
             {
-                Box start = new Box(pictureBox.Location.X + pictureBox.Width / 2, pictureBox.Location.Y + pictureBox.Height / 2);
-                Box end = new Box(pictureBox.Location.X + pictureBox.Width / 2, pictureBox.Location.Y + pictureBox.Height / 2);
-
-
-
-                _canvas.AddLine(start, end);
-
-
+                _canvas.AddLine(_canvas.IsInCollisionWithBlackEllipse(e.X, e.Y));
             }
 
         }

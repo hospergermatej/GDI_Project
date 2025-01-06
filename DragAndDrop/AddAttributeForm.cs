@@ -36,7 +36,7 @@ namespace DragAndDrop
         public void updateListBox()
         {
 
-            //_box.Attributes.Add(new ClassAttribute(0, NametextBox1.Text, DataTypetextBox1.Text));
+            _box.Attributes.Add(new ClassAttribute(0, NametextBox1.Text, DataTypetextBox1.Text));
 
 
 

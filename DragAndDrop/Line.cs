@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.AxHost;
 
 namespace DragAndDrop
 {
@@ -11,32 +12,21 @@ namespace DragAndDrop
         public Box Start { get; set; }
         public Box End { get; set; }
 
-        public void SearchPoints(Box start, Box end)
+        public Point StartP => new Point(Start.PositionX + Start.Width / 2, Start.PositionY + Start.Height / 2);
+        public Point EndP => new Point(End.PositionX + End.Width / 2, End.PositionY + End.Height / 2);
+
+       
+
+        public Line(Box start, Box end)
         {
-            Point StartPoint = new Point(start.PositionX, start.PositionY);
-            Point EndPoint = new Point(end.PositionX, end.PositionY);
-
-            StartP = StartPoint;
-            EndP = EndPoint;
+            Start = start;
+            End = end;
         }
-
-
-        private Point StartP { get; set;}
-        private Point EndP { get; set; }
-
-        public Line(Box start, Box end) 
-        {
-            start = Start;
-            end = End;
-           SearchPoints(start, end);
-        }
-
-
 
         public void Draw(Graphics g)
         {
             g.DrawLine(Pens.Black, StartP, EndP);
         }
-        
+
     }
 }

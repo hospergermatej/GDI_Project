@@ -9,8 +9,8 @@ namespace DragAndDrop
         public List<Box> _boxes;
         private Selection? _selection;
         private List<Line> _lines;
+        private Box? _firstClickedBox;
 
-        
 
 
         public Canvas()
@@ -18,15 +18,16 @@ namespace DragAndDrop
             _boxes = new List<Box>();
             _selection = null;
             _lines = new List<Line>();
+            _firstClickedBox = null;
         }
 
         public void Draw(Graphics g)
         {
-            foreach (Box box in _boxes)
-                box.Draw(g);
-
             foreach (Line line in _lines)
                 line.Draw(g);
+
+            foreach (Box box in _boxes)
+                box.Draw(g);
         }
 
         public void Select(int x, int y)
@@ -76,13 +77,13 @@ namespace DragAndDrop
 
         public Box? IsInCollisionWithBox(int x, int y)
         {
-            for(int i = 0; i < _boxes.Count; i++)
+            for (int i = 0; i < _boxes.Count; i++)
             {
                 Box box = _boxes[i];
                 if (box.IsInCollision(x, y))
                     return box;
             }
-            return null; 
+            return null;
 
 
         }
@@ -116,20 +117,21 @@ namespace DragAndDrop
                     return box;
             }
             return null;
-
-
         }
 
-        public void AddLine(Box startBox, Box endBox)
+        public void AddLine(Box box)
         {
-            Line line = new Line(startBox, endBox);
-            _lines.Add(line);
 
-            
+
+            if (_firstClickedBox != null && _firstClickedBox != null)
+            {
+                Line line = new Line(_firstClickedBox, box);
+                _lines.Add(line);
+                _firstClickedBox = null;
+            }
+            _firstClickedBox = box;
+
         }
-
-
-       
 
     }
         
